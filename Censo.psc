@@ -98,7 +98,7 @@ Algoritmo Censo
 			Si Vivo = 0 Entonces
 				Escribir "No hay nadie vivo de la lista"
 			SiNo
-				Si Joven = "" Entonces
+				Si Vivo = 1 Entonces
 					Escribir "La única persona viva este año es: ",Viejo
 					Escribir "La cantidad de personas muertas de la lista este año es: ",Petateo
 				SiNo
