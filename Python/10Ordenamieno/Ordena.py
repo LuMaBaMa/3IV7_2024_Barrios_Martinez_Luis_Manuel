@@ -1,4 +1,5 @@
 import tkinter as tk
+import time
 from tkinter import messagebox
 ventana = tk.Tk()
 ventana.title("Metodos de ordenamiento")
@@ -8,15 +9,18 @@ lista = []
 nlista = []
 
 def burbuja(lista):
+    inicio = time.time()
     n = len(lista)
     for i in range(n):
         for j in range(n - 1):
             if lista[j] > lista[j + 1]:
                 lista[j], lista[j + 1] = lista[j + 1], lista[j]
-    messagebox.showinfo("Ordena","La lista ordenanada es: " + str(lista))
+    tiempo = time.time() - inicio
+    messagebox.showinfo("Ordena","La lista ordenanada es: " + str(lista) + "\nTiempo de ejecución: {:.6f} segundos".format(tiempo))
     return lista
 
 def seleccion(lista):
+    inicio = time.time()
     n = len(lista)
     for i in range(n):
         min = i
@@ -24,10 +28,12 @@ def seleccion(lista):
             if lista[j] < lista[min]:
                 min = j
             lista[i], lista[min] = lista[min], lista[i]
-    messagebox.showinfo("Ordena","La lista ordenada es: " + str(lista))
+    tiempo = time.time() - inicio
+    messagebox.showinfo("Ordena","La lista ordenada es: " + str(lista) + "\nTiempo de ejecución: {:.6f} segundos".format(tiempo))
     return lista
 
 def insercion(lista):
+    inicio = time.time()
     for i in range(1, len(lista)):
         key = lista[i]
         j = i - 1
@@ -35,10 +41,12 @@ def insercion(lista):
             lista[j + 1] = lista[j]
             j -= 1
             lista[j + 1] = key
-    messagebox.showinfo("Ordena","La lista ordenada es: " + str(lista))
+    tiempo = time.time() - inicio
+    messagebox.showinfo("Ordena","La lista ordenada es: " + str(lista) + "\nTiempo de ejecución: {:.6f} segundos".format(tiempo))
     return lista
 
 def merge(lista):
+    inicio = time.time()
     if len(lista) > 1:
         mid = len(lista)//2
         izquierda = lista[:mid]
@@ -67,11 +75,13 @@ def merge(lista):
             lista[k] = derecha[j]
             j += 1
             k += 1
-
-    messagebox.showinfo("Ordena","La lista ordenada es: " + str(lista))
+    
+    tiempo = time.time() - inicio
+    messagebox.showinfo("Ordena","La lista ordenada es: " + str(lista) + "\nTiempo de ejecución: {:.6f} segundos".format(tiempo))
     return lista
 
 def quick_sort(lista):
+    inicio = time.time()
     if len(lista) <= 1:
         return lista
     pivote = lista[len(lista)//2]
@@ -80,7 +90,9 @@ def quick_sort(lista):
     medio = [x for x in lista if x == pivote]
     derecha = [x for x in lista if x > pivote]
     ordenada = quick_sort(izquierda) + medio + quick_sort(derecha)
-    messagebox.showinfo("Ordena","La lista ordenada es: " + str(ordenada))
+    
+    tiempo = time.time() - inicio
+    messagebox.showinfo("Ordena","La lista ordenada es: " + str(ordenada) + "\nTiempo de ejecución: {:.6f} segundos".format(tiempo))
     return ordenada
 
 def Ingresa():
